@@ -7,7 +7,9 @@
   </aside>
   <div class="col-8">
     <h3 class="pt-5 flex-sm-fill text-white"><%= @user.name %></h3>
-    <button class="mt-5 rounded bg-info align-self-end">編集</button></h3>
+    <% if @user == current_user %>
+    <%= link_to '編集', edit_user_path, class: "btn btn-info mt-5" %>
+    <% end %>
  </div>
  </div>
 <ul class="row nav nav-tabs nav-justified mb-2">

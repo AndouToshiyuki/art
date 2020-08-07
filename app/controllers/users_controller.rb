@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [ :show]
+  before_action :require_user_logged_in, only: [:index, :show, :edit, :update]
+
+  def index
+    @users = User.order(id: :desc).page(params[:page]).per(25)
+  end
 
   def show
     @user = User.find(params[:id])
     @user.image_name= "/user_images/default_user.jpg"
+
   end
 
   def new
@@ -21,6 +26,17 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+    
+    if @user != current_user
+      redirect_to @user
+    end
+  end
+  
+  def update
   end
 
   private
