@@ -1,12 +1,11 @@
-<table>
-<div class="row bg-secondary pt-5 pb-5">
+<div class="row bg-white pt-5 pb-5">
   <aside class="col-4">
     <div class="image-field rounded-circle">
     <img src="<%=@user.image_name %>">
     </div>
   </aside>
   <div class="col-8">
-    <h3 class="pt-5 flex-sm-fill text-white"><%= @user.name %></h3>
+    <h3 class="pt-5 flex-sm-fill text-black"><%= @user.name %></h3>
     <% if @user == current_user %>
     <%= link_to '編集', edit_user_path, class: "btn btn-info mt-5" %>
     <% end %>
