@@ -1,0 +1,13 @@
+<% if logged_in? %>
+  <% if current_user.favorited_post?(post) %>
+    <%= form_with(model: current_user.favorites.find_by(post_id: post.id),local:true,method: :delete) do |f| %>
+      <%= f.hidden_field :post_id, value: post.id %>
+      <%= f.submit '♥', class: 'btn btn-success' %>
+    <% end %>
+  <% else %>
+  <%= form_with(model: current_user.favorites.new, local:true, method: :post) do |f| %>
+      <%= f.hidden_field :post_id, value: post.id %>
+      <%= f.submit '♡', class: 'btn btn-success' %>
+    <% end %>
+  <% end %>
+<% end %>
