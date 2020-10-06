@@ -19,6 +19,5 @@
   <li class="col-3 nav-item bg-info"><a href="<%= followers_user_path(@user) %>" class="nav-link text-white">Follower一覧</a></li>
   <li class="col-3 nav-item bg-info"><a href="<%= likes_user_path(@user) %>" class="nav-link text-white">いいね一覧</a></li>
 </ul>
-
-<%= render 'users', users: @followers %>
+<%= render 'posts/posts', posts: @favorites %>
 <%= render 'layouts/post_button' %>

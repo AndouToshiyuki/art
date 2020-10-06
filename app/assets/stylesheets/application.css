@@ -16,10 +16,14 @@ body{
 }
 
 .container{
+  min-height: 500px;
   margin-top: 60px;
   padding-bottom: 50px;
   padding-top:10px;
   background-color: white;
+  background: -moz-linear-gradient(top, #FFF, #FFC778 30%, #F89174 60%, #748af8);
+  background: -webkit-linear-gradient(top, #FFF, #FFC778 30%, #F89174 60%, #748af8);
+  background: linear-gradient(to bottom, #FFF, #FFC778 30%, #F89174 60%, #748af8);
 }
 .b{
   box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
@@ -36,4 +40,8 @@ body{
 }
 .btn-group{
   margin:0 0 0 auto;
+}
+.posting{
+  float:right;
+  width: 200px;
 }

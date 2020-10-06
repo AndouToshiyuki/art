@@ -1,5 +1,6 @@
 <div class="text-center">
   <h1>編集ページ</h1>
+  <p>Name、Emailのみの編集・更新が可能です</p>
 </div>
 
 <div class="row">
@@ -18,12 +19,12 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :password, 'Password' %>
+        <%= f.label :password, 'パスワード（4文字以上）' %>
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation, 'Confirmation' %>
+        <%= f.label :password_confirmation, 'パスワード確認' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
 

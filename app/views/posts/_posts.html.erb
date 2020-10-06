@@ -1,7 +1,10 @@
 <div class="card-deck">
   <% posts.each do |post| %>
   <div class="card mb-3 mt-3 ml-5 mr-4" style="min-width: 300px; max-width: 300px">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+    <p>
+    <strong></strong>
+    <%= image_tag post.image.url if post.image? %>
+    </p>
     <div class="card-body">
       <ul class="list-unstyled">
         <li class="media mb-3">
@@ -12,7 +15,7 @@
             <div>
               <p><%= post.content %></p>
             </div>
-            <span class="text-muted">posted at <%= post.created_at %></span>
+            <span class="text-muted"><%= post.created_at %></span>
             <div class="btn-toolbar">
               <div class="btn-group mt-5">
                 <%= render 'favorites/favorite_button', post: post %>

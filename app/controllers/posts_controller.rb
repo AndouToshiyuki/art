@@ -4,12 +4,13 @@ before_action :correct_user, only: [:destroy]
 
   def create
     @post = current_user.posts.build(post_params)
+    
     if @post.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = '作品を投稿しました。'
       redirect_to '/top'
     else
       @posts = current_user.posts.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = '作品の投稿に失敗しました。'
       render 'users/show'
     end
   end
@@ -23,7 +24,7 @@ before_action :correct_user, only: [:destroy]
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content,:image)
   end
   
   def correct_user
