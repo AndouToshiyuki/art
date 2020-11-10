@@ -14,4 +14,5 @@ class FavoritesController < ApplicationController
     flash[:success] = 'いいねを外しました。'
     redirect_to '/top'
   end
+  
 end

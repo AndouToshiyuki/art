@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.order(id: :desc).page(params[:page])
     @post = current_user.posts.build
+    @user.image_name= "/user_images/default_user.jpg"
   end
 
   def new

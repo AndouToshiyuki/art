@@ -6,18 +6,18 @@ before_action :correct_user, only: [:destroy]
     @post = current_user.posts.build(post_params)
     
     if @post.save
-      flash[:success] = '作品を投稿しました。'
+      flash[:success] = 'よくできました❀'
       redirect_to '/top'
     else
-      @posts = current_user.posts.order(id: :desc).page(params[:page])
-      flash.now[:danger] = '作品の投稿に失敗しました。'
-      render 'users/show'
+      @posts =Post.all.sort {|a,b| b.favorites.count <=> a.favorites.count}
+      flash.now[:danger] = '文字数が多すぎます。'
+      render 'posting/index'
     end
   end
 
   def destroy
     @post.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = '投稿を削除しました。'
     redirect_back(fallback_location: top_path)
   end
 

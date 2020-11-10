@@ -45,3 +45,11 @@ body{
   float:right;
   width: 200px;
 }
+
+.haiku{
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+  font-family: 'STKaiti';
+  font-size: 20px;
+  -webkit-text-orientation: upright;
+}
