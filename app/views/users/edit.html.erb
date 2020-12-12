@@ -1,12 +1,12 @@
 <div class="text-center">
   <h1>編集ページ</h1>
-  <p>Name、Emailのみの編集・更新が可能です</p>
+  <p>Name、Email、パスワードの編集・更新が可能です</p>
 </div>
 
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
     
-    <%= form_with(url: "/users/#{@user.id}/update", method: :post, model: @user, local: true) do |f| %>
+    <%= form_with(method: :put, model: @user) do |f| %>
       
       <div class="form-group">
         <%= f.label :name, 'Name' %>

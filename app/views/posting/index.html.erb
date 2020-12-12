@@ -1,24 +1,20 @@
 <h1 class="text-center mt-3">【作品投稿ページ】</h1>
 <h5 class="text-center mt-3">基本的に"17文字"で表現しましょう！更に改行すると美しく見えます。
 <br>（入力できるのは30文字までです。）</h5>
-<% if logged_in? %>
-  <div class="mt-5 mb-5 bg-white">
-    <%= form_with(model: @post, local: true) do |f| %>
-      <div class="form-group">
-        
-        <%= f.text_area :content,
+<div class="mt-5 mb-5 bg-white">
+  <%= form_with(model: @post, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content,
         value: '□□□□□
         
 □□□□□□□
         
 □□□□□', 
-        class: 'form-control', rows: 5 %>
-      </div>
-      <div class="posting">
+      class: 'form-control', rows: 5 %>
+    </div>
+    <div class="posting">
       <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-      </div>
-    <% end %>
-  </div>
-  <% else %>
-  <%= render '/login' %>
-<% end %>
+    </div>
+  <% end %>
+</div>
+  

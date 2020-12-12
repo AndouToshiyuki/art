@@ -1,11 +1,10 @@
 class ToppagesController < ApplicationController
-  before_action :require_user_logged_in
-   
+  before_action :required_logged_in
+  
   def index
     if logged_in?
       @post = current_user.posts.build  # form_with 用
-      @posts =Post.all.sort {|a,b| b.favorites.count <=> a.favorites.count}
+      @posts = @posts =Post.all.order(favorites_count: :desc).page(params[:page])
     end
   end
-  
 end

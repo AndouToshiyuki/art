@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
-before_action :require_user_logged_in
-before_action :correct_user, only: [:destroy]
+  before_action :required_logged_in
+  before_action :current_user_posts, only: [:destroy]
 
   def create
     @post = current_user.posts.build(post_params)
     
     if @post.save
       flash[:success] = 'よくできました❀'
-      redirect_to '/top'
+      redirect_to top_url
     else
-      @posts =Post.all.sort {|a,b| b.favorites.count <=> a.favorites.count}
+      @posts =Post.all.order(favorites_count: :desc).page(params[:page])
       flash.now[:danger] = '文字数が多すぎます。'
       render 'posting/index'
     end
@@ -22,12 +22,12 @@ before_action :correct_user, only: [:destroy]
   end
 
   private
-
+  
   def post_params
     params.require(:post).permit(:content,:image)
   end
   
-  def correct_user
+  def current_user_posts
     @post = current_user.posts.find_by(id: params[:id])
     unless @post
       redirect_to 'users/show'

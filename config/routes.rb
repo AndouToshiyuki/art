@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  post 'users/:id/update', to: 'users#update'
-  
   get 'signup', to: 'users#new'
-  resources :users, only: [:index,:show, :new, :create, :edit] do
+
+  resources :favorites, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy]
+  resources :users, only: [:index,:show, :new, :create, :edit, :update] do
     member do
       get :followings
       get :followers
@@ -19,7 +21,4 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :posts, only: [:create, :destroy]
-  resources :relationships, only: [:create, :destroy]
-  resources :favorites, only: [:create, :destroy]
 end

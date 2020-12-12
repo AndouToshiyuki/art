@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :followings, :followers]
+  before_action :required_logged_in, only: [:index, :show, :edit, :update, :followings, :followers]
 
   def index
     @users = User.order(id: :asc).page(params[:page]).per(25)
   end
-
+  
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(id: :desc).page(params[:page])
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      redirect_to '/top'
+      redirect_to top_url
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
