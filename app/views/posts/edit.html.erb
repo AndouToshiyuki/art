@@ -1,0 +1,16 @@
+<h1 class="text-center mt-3">【投稿編集ページ】</h1>
+<h5 class="text-center mt-3">基本的に"17文字"で表現しましょう！更に改行すると美しく見えます。
+<br>（入力できるのは30文字までです。）</h5>
+<span>現在ログイン中のユーザー：<%= current_user.name %></span>
+<div class="mt-5 mb-5 bg-white">
+  <%= form_with(model: @post) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content,
+        value: @post.content, 
+      class: 'form-control', rows: 5 %>
+    </div>
+    <div class="posting">
+      <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
+    </div>
+  <% end %>
+</div>

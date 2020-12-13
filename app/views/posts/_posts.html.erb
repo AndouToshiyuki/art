@@ -18,6 +18,7 @@
                 <%= render 'favorites/favorite_button', post: post %>
                 <%= post.favorites.count %>
                 <% if current_user == post.user %>
+                  <%= link_to '編集', edit_post_path(post), class: 'btn btn-primary' %>
                   <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除してもよろしいですか?" }, class: 'btn btn-danger' %>
                 <% end %>
               </div>
