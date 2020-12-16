@@ -5,13 +5,13 @@ class FavoritesController < ApplicationController
     post = Post.find(params[:favorite][:post_id])
     current_user.favorite(post)
     flash[:success] = '投稿をいいねしました。'
-    redirect_to top_url
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     post = Post.find(params[:favorite][:post_id])
     current_user.unfavorite(post)
     flash[:success] = 'いいねを外しました。'
-    redirect_to top_url
+    redirect_back(fallback_location: root_path)
   end
 end

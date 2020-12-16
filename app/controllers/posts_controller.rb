@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   before_action :required_logged_in
   before_action :current_user_posts, only: [:destroy, :edit, :update]
-
+  
   def create
     @post = current_user.posts.build(post_params)
-    
+    @tag_list = params[:post][:tag_name].split(nil)
     if @post.save
+      @post.save_tag(@tag_list)
       flash[:success] = 'よくできました❀'
       redirect_to top_url
     else
@@ -23,11 +24,14 @@ class PostsController < ApplicationController
   
   def edit
     @post = Post.find(params[:id])
+    @tag_list =@post.tags.pluck(:tag_name).split(nil)
   end
   
   def update
     @post = Post.find(params[:id])
+    @tag_list = params[:post][:tag_name].split(nil)
     if @post.update(post_params)
+      @post.save_tag(@tag_list)
       flash[:success] = '投稿を編集しました。'
       redirect_to top_url
     else

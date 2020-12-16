@@ -1,5 +1,6 @@
+<h3>選択したタグ:<%= @tag.tag_name%></h3>
 <div class="card-deck">
-  <% posts.each do |post| %>
+  <% @posts.each do |post| %>
   <div class="card mb-3 mt-3 ml-5 mr-4" style="min-width: 300px; max-width: 300px">
     <div class="card-body pr-5 pl-0">
         <li class="media list-unstyled">

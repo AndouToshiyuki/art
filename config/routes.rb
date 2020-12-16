@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-
+  
+  resources :tags, only: [:show]
   resources :favorites, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :posts, only: [:create, :destroy, :edit, :update]
