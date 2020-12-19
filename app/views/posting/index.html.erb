@@ -1,7 +1,7 @@
 <h1 class="text-center mt-3">【作品投稿ページ】</h1>
 <h5 class="text-center mt-3">基本的に"17文字"で表現しましょう！更に改行すると美しく見えます。
 <br>（入力できるのは30文字までです。）
-<br>タグ入力欄では"スペースを入力することで複数のタグを付けることができます。"
+<br>タグ入力欄では"#で区切ることで複数のタグを付けることができます。"
 <br>"例：音楽 文芸 スポーツ"</h5>
 <div class="mt-5 mb-5 bg-white">
   <%= form_with(model: @post, local: true) do |f| %>
@@ -13,7 +13,7 @@
         
 □□□□□', 
       class: 'form-control', rows: 5 %>
-      <%= f.text_field :tag_name, value: 'タグ入力欄',class: 'form-control', rows: 1 %>
+      <%= f.text_field :tag_name, class: 'form-control', placeholder: 'タグ入力欄', rows: 1 %>
     </div>
     <div class="posting">
       <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>

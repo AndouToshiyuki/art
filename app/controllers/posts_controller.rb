@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.build(post_params)
-    @tag_list = params[:post][:tag_name].split(nil)
+    @tag_list = params[:post][:tag_name].split("#")
     if @post.save
       @post.save_tag(@tag_list)
       flash[:success] = 'よくできました❀'

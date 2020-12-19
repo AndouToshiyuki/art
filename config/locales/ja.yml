@@ -2,3 +2,7 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+  errors:
+    messages:
+      taken: はすでに存在します
+      password_confirmation: とPasswordの入力が一致しません

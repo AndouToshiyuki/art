@@ -9,9 +9,11 @@
             </div>
             </div>
           </div>
+          <div class="ml-1">タグ：
           <% post.tags.each do |tag| %>
             <%=link_to tag.tag_name, tag_path(tag) %>
           <% end %>
+          </div>
             <div>
               <p class="text-center">UserName : <%= link_to  post.user.name, user_path(post.user) %></p>
             </div>
@@ -23,7 +25,9 @@
                   <%= link_to '削除', post, method: :delete, data: { confirm: "本当に削除してもよろしいですか?" }, class: 'btn btn-danger' %>
                 <% end %>
                 <%= render 'favorites/favorite_button', post: post %>
+                <div class="mt-1 mr-1 align-items-center font-weight-normal">
                 <%= post.favorites.count %>
+                </div>
               </div>
         </li>
     </div>
