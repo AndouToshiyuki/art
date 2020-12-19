@@ -17,19 +17,21 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    flash[:success] = '投稿を削除しました。'
-    redirect_back(fallback_location: top_path)
+    if @post.destroy
+      @post.tags.destroy
+      flash[:success] = '投稿を削除しました。'
+      redirect_back(fallback_location: top_path)
+    end
   end
   
   def edit
     @post = Post.find(params[:id])
-    @tag_list =@post.tags.pluck(:tag_name).split(nil)
+    @tag_list =@post.tags.pluck(:tag_name).split("#")
   end
   
   def update
     @post = Post.find(params[:id])
-    @tag_list = params[:post][:tag_name].split(nil)
+    @tag_list = params[:post][:tag_name].split("#")
     if @post.update(post_params)
       @post.save_tag(@tag_list)
       flash[:success] = '投稿を編集しました。'
