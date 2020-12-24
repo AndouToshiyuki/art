@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   it "is valid with a name, email, and password" do
   user = User.new(
     name: "abc",
-    email: "tester@example.com",
+    email: "testerr@example.com",
     password: "dottle-nouveau-pavilion-tights-furze",
     password_confirmation: "dottle-nouveau-pavilion-tights-furze",
     )
@@ -32,19 +32,19 @@ RSpec.describe User, type: :model do
   # 確認用パスワードがなければ無効な状態であること
   it "is invalid without a password_confirmation although with a password" do
     user = User.new(
-      password: "dottle-nouveau-pavilion-tights-furze",
-      password_confirmation: "",
-      )
+    password: "dottle-nouveau-pavilion-tights-furze",
+    password_confirmation: "",
+    )
     user.valid?
     expect(user.errors[:password_confirmation]).to include("とPasswordの入力が一致しません")
   end
   # 重複したメールアドレスなら無効な状態であること
   it "is invalid with a duplicate email" do
     User.create(
-      name:  "Joe",
-      email:  "tester@example.com",
-      password:  "dottle-nouveau-pavilion-tights-furze",
-      )
+    name:  "Joe",
+    email:  "tester@example.com",
+    password:  "dottle-nouveau-pavilion-tights-furze",
+    )
     user = User.new(
     name: "Jane",
     email: "tester@example.com",

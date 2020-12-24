@@ -11,8 +11,8 @@ class PostsController < ApplicationController
       redirect_to top_url
     else
       @posts =Post.all.order(favorites_count: :desc).page(params[:page])
-      flash.now[:danger] = '文字数が多すぎます。'
-      render 'posting/index'
+      flash[:danger] = '投稿できませんでした'
+      redirect_back(fallback_location: top_path)
     end
   end
 
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
       redirect_to top_url
     else
       @posts =Post.all.order(favorites_count: :desc).page(params[:page])
-      flash.now[:danger] = '文字数が多すぎます。'
+      flash.now[:danger] = '投稿できませんでした'
       redirect_to top_url
     end
   end
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:content,:image)
+    params.require(:post).permit(:content)
   end
   
   def current_user_posts

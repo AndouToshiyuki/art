@@ -15,3 +15,8 @@ ja:
               taken: "はすでに存在します"
             password_confirmation:
               confirmation: "とPasswordの入力が一致しません"
+        post:
+          attributes:
+            content:
+              blank: "投稿できませんでした"
+              too_long: "投稿できませんでした"
