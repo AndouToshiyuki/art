@@ -15,16 +15,13 @@ RSpec.describe Post, type: :model do
   end
   #save_tag
     describe '#save_tag' do
-    subject { post.save_tag(['tag1']) }
-    let(:user) { User.create(
-    name: "abc",
-    email: "tester@example.com",
-    password: "dottle-nouveau-pavilion-tights-furze",
-    password_confirmation: "dottle-nouveau-pavilion-tights-furze") }
+    subject { post.save_tag(['tag1', 'tag2']) }
     let(:post) { Post.create(content: "aaaaa,bbbbbbb,ccccc") }
     it do
+      Tag.create(tag_name: 'tag1')
+      Tag.create(tag_name: 'tag3')
       subject
-      expect(Tag.all.count).to eq(2)
+      expect(Tag.all.count).to eq(3)
     end
-    end
+  end
 end
